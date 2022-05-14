@@ -21,27 +21,27 @@ public class LT_PlayGround_RadioTest {
     public RemoteWebDriver driver;
     private String Status = "failed";
 
-    @BeforeMethod
-    public void setup(Method m, ITestContext ctx) throws MalformedURLException {
-        String username = System.getenv("LT_USERNAME") == null ? "" : System.getenv("LT_USERNAME");
-        String authkey = System.getenv("LT_ACCESS_KEY") == null ? "" : System.getenv("LT_ACCESS_KEY");
-        ;
-        String hub = "@hub.lambdatest.com/wd/hub";
-
-        DesiredCapabilities caps = new DesiredCapabilities();
-        caps.setCapability("platform", "MacOS Catalina");
-        caps.setCapability("browserName", "Safari");
-        caps.setCapability("version", "latest");
-        caps.setCapability("build", "TestNG With Java");
-        caps.setCapability("name", m.getName() + " - " + this.getClass().getName());
-        caps.setCapability("plugin", "git-testng");
-
-        String[] Tags = new String[] { "Feature", "Falcon", "Severe" };
-        caps.setCapability("tags", Tags);
-
-        driver = new RemoteWebDriver(new URL("https://" + username + ":" + authkey + hub), caps);
-
-    }
+//    @BeforeMethod(alwaysRun = false)
+//    public void setup(Method m, ITestContext ctx) throws MalformedURLException {
+//        String username = System.getenv("LT_USERNAME") == null ? "veenadevi" : System.getenv("LT_USERNAME");
+//        String authkey = System.getenv("LT_ACCESS_KEY") == null ? "XsSteQyzWcNpMa4TZOhhrX1Cm8pn83I8u18nKul1vsYXlcFDdJ" : System.getenv("LT_ACCESS_KEY");
+//        ;
+//        String hub = "@hub.lambdatest.com/wd/hub";
+//
+//        DesiredCapabilities caps = new DesiredCapabilities();
+//        caps.setCapability("platform", "MacOS Catalina");
+//        caps.setCapability("browserName", "Safari");
+//        caps.setCapability("version", "latest");
+//        caps.setCapability("build", "TestNG With Java");
+//        caps.setCapability("name", m.getName() + " - " + this.getClass().getName());
+//        caps.setCapability("plugin", "git-testng");
+//
+//        String[] Tags = new String[] { "Feature", "Falcon", "Severe" };
+//        caps.setCapability("tags", Tags);
+//
+//        driver = new RemoteWebDriver(new URL("https://" + username + ":" + authkey + hub), caps);
+//
+//    }
 
     @Test
     public void CheckBootstarpModal(){
@@ -51,17 +51,23 @@ public class LT_PlayGround_RadioTest {
 
 
 
-//        WebDriver driver= new ChromeDriver();
-//        driver.manage().window().maximize();
+        WebDriver driver= new ChromeDriver();
+        driver.manage().window().maximize();
         driver.get("https://www.lambdatest.com/selenium-playground/bootstrap-modal-demo");
         try{
             driver.findElement(By.cssSelector("[data-target='#myModal']")).click();
             //driver.switchTo().newWindow(WindowType.TAB);
-           // driver.switchTo().activeElement();
+            driver.switchTo().activeElement();
+
+            WebElement modalContainer=driver.findElement(By.cssSelector("#myModal"));
+            System.out.println("modalContainer "+modalContainer.getTagName());
+            System.out.println("ModelWindow visible status "+ modalContainer.isDisplayed());
+           String text=  modalContainer.findElement(By.tagName("p")).getText();
+            System.out.println("ModelWindow text "+text);
+
+            System.out.println("added to check ");
 
 
-
-            WebElement modalContainer = driver.findElement(By.className("modal-dialog"));
 
         }
         catch ( NoSuchElementException | ElementNotInteractableException e){
