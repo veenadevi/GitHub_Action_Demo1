@@ -23,8 +23,8 @@ public class LT_PlayGround_RadioTest {
 
 //    @BeforeMethod(alwaysRun = false)
 //    public void setup(Method m, ITestContext ctx) throws MalformedURLException {
-//        String username = System.getenv("LT_USERNAME") == null ? "veenadevi" : System.getenv("LT_USERNAME");
-//        String authkey = System.getenv("LT_ACCESS_KEY") == null ? "XsSteQyzWcNpMa4TZOhhrX1Cm8pn83I8u18nKul1vsYXlcFDdJ" : System.getenv("LT_ACCESS_KEY");
+//        String username = System.getenv("LT_USERNAME") == null ? "" : System.getenv("LT_USERNAME");
+//        String authkey = System.getenv("LT_ACCESS_KEY") == null ? "" : System.getenv("LT_ACCESS_KEY");
 //        ;
 //        String hub = "@hub.lambdatest.com/wd/hub";
 //
